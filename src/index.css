@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +9,59 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply bg-slate-100
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+
+@keyframes loading-dots {
+  0% {
+      content: 'Loading';
+  }
+  25% {
+      content: 'Loading.';
+  }
+  50% {
+      content: 'Loading..';
+  }
+  75% {
+      content: 'Loading...';
+  }
+  100% {
+      content: 'Loading';
+  }
+}
+
+.loading-text::after {
+  display: inline-block;
+  animation: loading-dots 1.5s steps(4, end) infinite;
+  content: 'Loading';
+}
+
+image-fixed-height {
+  height: 150px; /* Set your desired constant height */
+  object-fit: contain; /* Ensure the image scales properly within the height */
 }
